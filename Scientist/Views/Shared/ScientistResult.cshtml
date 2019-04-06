@@ -1,0 +1,326 @@
+﻿@model ScientistResult
+
+
+@if (ViewData["Result"] == null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Experiment was not executed</h2>
+            <span>No report generated, Scientist.net was disabled</span>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Scientist Report</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Properties</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="reportProperty">Experiment Name</td>
+                    <td class="reportValue">@Model.ExperimentName</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Matched</td>
+                    <td class="reportValue">@Model.Matched</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Mismatched</td>
+                    <td class="reportValue"> @Model.Mismatched</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Control</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="reportProperty">Name</td>
+                    <td class="reportValue">@Model.Control.Name</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Cleaned Value</td>
+                    <td class="reportValue">@Model.Control.CleanedValue</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Value</td>
+                    <td class="reportValue">@Model.Control.Value</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Duration</td>
+                    <td class="reportValue">@Model.Control.Duration</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Exception</td>
+                    <td class="reportValue">@Model.Control.Exception</td>
+                </tr>
+                <tr>
+                    <td class="reportProperty">Thrown</td>
+                    <td class="reportValue">@Model.Control.Thrown</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Contexts</h3>
+
+            @if (!Model.Contexts.Any())
+            {
+                <span><i>No Contexts</i></span>
+            }
+
+            @foreach (var context in Model.Contexts)
+            {
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="reportProperty">Key</td>
+                        <td class="reportValue">@context.Key</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Value</td>
+                        <td class="reportValue">@context.Value</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Candidates</h3>
+
+            @if (!Model.Candidates.Any())
+            {
+                <span><i>No Candidates</i></span>
+            }
+
+            @foreach (var candidate in Model.Candidates)
+            {
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="reportProperty">Name</td>
+                        <td class="reportValue">@candidate.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Cleaned Value</td>
+                        <td class="reportValue">@candidate.CleanedValue</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Value</td>
+                        <td class="reportValue">@candidate.Value</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Duration</td>
+                        <td class="reportValue">@candidate.Duration</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Exception</td>
+                        <td class="reportValue">@candidate.Exception</td>
+                    </tr>
+
+                    <tr>
+                        <td class="reportProperty">Thrown</td>
+                        <td class="reportValue">@candidate.Thrown</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Observations</h3>
+
+            @if (!Model.Observations.Any())
+            {
+                <span><i>No Observations</i></span>
+            }
+
+            @foreach (var observations in Model.Observations)
+            {
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="reportProperty">Name</td>
+                        <td class="reportValue">@observations.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Cleaned Value</td>
+                        <td class="reportValue">@observations.CleanedValue</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Value</td>
+                        <td class="reportValue">@observations.Value</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Duration</td>
+                        <td class="reportValue">@observations.Duration</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Exception</td>
+                        <td class="reportValue">@observations.Exception</td>
+                    </tr>
+
+                    <tr>
+                        <td class="reportProperty">Thrown</td>
+                        <td class="reportValue">@observations.Thrown</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Ignored Observations</h3>
+
+            @if (!Model.IgnoredObservations.Any())
+            {
+                <span><i>No Ignored Observations</i></span>
+            }
+
+            @foreach (var observations in Model.IgnoredObservations)
+            {
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="reportProperty">Name</td>
+                        <td class="reportValue">@observations.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Cleaned Value</td>
+                        <td class="reportValue">@observations.CleanedValue</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Value</td>
+                        <td class="reportValue">@observations.Value</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Duration</td>
+                        <td class="reportValue">@observations.Duration</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Exception</td>
+                        <td class="reportValue">@observations.Exception</td>
+                    </tr>
+
+                    <tr>
+                        <td class="reportProperty">Thrown</td>
+                        <td class="reportValue">@observations.Thrown</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Mismatched Observations</h3>
+
+            @if (!Model.MismatchedObservations.Any())
+            {
+                <span><i>No Mismatched Observations</i></span>
+            }
+
+            @foreach (var observations in Model.MismatchedObservations)
+            {
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="reportProperty">Name</td>
+                        <td class="reportValue">@observations.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Cleaned Value</td>
+                        <td class="reportValue">@observations.CleanedValue</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Value</td>
+                        <td class="reportValue">@observations.Value</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Duration</td>
+                        <td class="reportValue">@observations.Duration</td>
+                    </tr>
+                    <tr>
+                        <td class="reportProperty">Exception</td>
+                        <td class="reportValue">@observations.Exception</td>
+                    </tr>
+
+                    <tr>
+                        <td class="reportProperty">Thrown</td>
+                        <td class="reportValue">@observations.Thrown</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            }
+        </div>
+    </div>
+}

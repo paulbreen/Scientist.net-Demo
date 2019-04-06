@@ -1,0 +1,37 @@
+﻿code {
+    background-color: #1E1E1E;
+    color: #D0D6BE;
+    font-size: 150%;
+    border-radius: 0px;
+    display: block;
+    width: fit-content;
+    padding: 20px;
+}
+
+.keyword {
+    color: #489CD6;
+}
+
+.className {
+    color: #4EC9B0;
+}
+
+.string {
+    color: #BF9D79
+}
+
+.reportProperty {
+    width: 140px;
+}
+
+.reportValue {
+    width: 200px;
+}
+
+.variable {
+    color: #70DAFC;
+}
+
+.keyAction {
+    color: #D8A0DF;
+}
