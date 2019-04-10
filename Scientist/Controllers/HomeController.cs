@@ -44,9 +44,9 @@ namespace ScientistSample.Controllers
                 }
             }
 
-            var resultSummary = Scientist.Science<Result>("Simple \"Real World\" Example", experiment =>
+            var resultSummary = Scientist.Science<Result>("Simple Example", experiment =>
             {
-                experiment.Compare((x,y) => x.Largest == y.Largest && Math.Abs(x.Average - y.Average) < 0 && x.Smallest == y.Smallest && x.Sum == y.Sum );
+                experiment.Compare((x,y) => x.Largest == y.Largest && Math.Abs(x.Average - y.Average) < .5 && x.Smallest == y.Smallest && x.Sum == y.Sum );
                 experiment.Use( ()  => OldApi.Math.Summary(list.ToArray()));
                 experiment.Try( () => NewApi.Math.Summary(list.ToArray()));
             });
@@ -80,8 +80,9 @@ namespace ScientistSample.Controllers
 
             var resultSummary = Scientist.Science<Result>("Math", experiment =>
             {
+                experiment.Compare((x, y) => x.Largest == y.Largest && Math.Abs(x.Average - y.Average) < .5 && x.Smallest == y.Smallest && x.Sum == y.Sum);
                 experiment.Use(() => OldApi.Math.Summary(list.ToArray()));
-                experiment.Try(() => throw new Exception());
+                experiment.Try(() => throw new Exception("Oh Oh Spaghettios"));
             });
 
             ViewData.Add("Result", ((ResultPublisher)Scientist.ResultPublisher).Result);
@@ -114,6 +115,7 @@ namespace ScientistSample.Controllers
 
             var resultSummary = Scientist.Science<Result>("Math", experiment =>
             {
+                experiment.Compare((x, y) => x.Largest == y.Largest && Math.Abs(x.Average - y.Average) < .5 && x.Smallest == y.Smallest && x.Sum == y.Sum);
                 experiment.Use(() => OldApi.Math.Summary(list.ToArray()));
                 experiment.Try(() => NewApi.Math.Summary(list.ToArray()));
             });
@@ -146,10 +148,10 @@ namespace ScientistSample.Controllers
 
             var resultSummary = Scientist.Science<Result>("Math", experiment =>
             {
+                experiment.Compare((x, y) => x.Largest == y.Largest && Math.Abs(x.Average - y.Average) < .5 && x.Smallest == y.Smallest && x.Sum == y.Sum);
                 experiment.Use(() => OldApi.Math.Summary(list.ToArray()));
                 experiment.Try("Candidate 1", () => NewApi.Math.Summary(list.ToArray()));
                 experiment.Try("Candidate 2", () => NewApi.Math.Summary(list.ToArray()));
-                experiment.Try("Candidate 3", () => NewApi.Math.Summary(list.ToArray()));
             });
 
             ViewData.Add("Result", ((ResultPublisher)Scientist.ResultPublisher).Result);
