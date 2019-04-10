@@ -17,19 +17,16 @@
         <span>Install-Package Scientist</span>
     </code>
 </div>
-
-
-
-
 <br />
 <br />
 <br />
 <div class="text-left">
     <code>
-        <span class="keyword">var</span> result = <span class="className">Scientist</span>.Science&lt;<span class="keyword">bool</span>&gt;(<span class="string">"my experiment name"</span>, experiment =>
+        <span class="keyword">var</span> result = <span class="keyword">await</span> <span class="className">Scientist</span>.ScienceAsync&lt;<span class="keyword">bool</span>&gt;(<span class="string">"my experiment name"</span>, 
+        <br /> experiment =>
         <br />{
-        <br />&nbsp;&nbsp;&nbsp;&nbsp; experiment.Use(ExistingMethod);
-        <br />&nbsp;&nbsp;&nbsp;&nbsp; experiment.Try(<span class="string">"Candidate 1"</span>, RefactoredMethod);
+        <br />&nbsp;&nbsp;&nbsp;&nbsp; experiment.Use(<span class="keyword">async </span> () => ExistingMethod());
+        <br />&nbsp;&nbsp;&nbsp;&nbsp; experiment.Try(<span class="string">"Candidate 1"</span>, <span class="keyword">async </span> () => RefactoredMethod());
         <br />});
     </code>
 </div>

@@ -11,10 +11,12 @@
 <br/>
 <div class="text-left">
     <code>
-        <span class="keyword">var</span> <span class="variable">result</span> = <span class="className">Scientist</span>.Science&lt;<span class="className">Result</span>&gt;(<span class="string">"Simple experiment"</span>, experiment =>
-        <br />{
-        <br />&nbsp;&nbsp;&nbsp;&nbsp; <span class="variable">experiment</span>.Use(() => OldApi.<span class="className">Math</span>.Summary(<span class="variable">Numbers</span>));
-        <br />&nbsp;&nbsp;&nbsp;&nbsp; <span class="variable">experiment</span>.Try(() => NewApi.<span class="className">Math</span>.Summary(<span class="variable">Numbers</span>));
+        <span class="keyword">var</span> <span class="variable">result</span> =  <span class="keyword">await</span> <span class="className">Scientist</span>.ScienceAsync&lt;<span class="className">Result</span>&gt;(<span class="string">"Simple experiment"</span>, 
+        
+        <br/>experiment =>
+    <br />{
+    <br />&nbsp;&nbsp;&nbsp;&nbsp; <span class="variable">experiment</span>.Use(<span class="keyword">async </span>() => <span class="keyword">await</span> OldApi.<span class="className">Math</span>.Summary(<span class="variable">Numbers</span>));
+    <br />&nbsp;&nbsp;&nbsp;&nbsp; <span class="variable">experiment</span>.Try(<span class="keyword">async</span> () => <span class="keyword">await</span> NewApi.<span class="className">Math</span>.Summary(<span class="variable">Numbers</span>));
     <br />});
 </code>
 </div>
