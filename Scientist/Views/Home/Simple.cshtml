@@ -3,6 +3,12 @@
     ViewData["Title"] = "Simple Example";
 }
 
+
+<div class="text-center">
+    <h1> Simple "Real World" Example</h1>
+</div>
+
+<br/>
 <div class="text-left">
     <code>
         <span class="keyword">var</span> <span class="variable">result</span> = <span class="className">Scientist</span>.Science&lt;<span class="className">Result</span>&gt;(<span class="string">"Simple experiment"</span>, experiment =>
@@ -24,34 +30,39 @@
 
         @Html.Label("Comma separated list of integers")
         <br /><br />
-        @Html.TextArea("Numbers");
+        @Html.TextArea("Numbers", new { @style = "width : 50%"});
         <br /><br />
         <input type="submit" />
     }
 </div>
 
-<div class="text-left">
-    @if (Model != null)
-    {
-        <fieldset>
-            @Html.Label("Smallest", "Smallest")
-            @Model.Smallest
-        </fieldset>
-        <fieldset>
-            @Html.Label("Largest", "Largest")
-            @Model.Largest
-        </fieldset>
-        <fieldset>
-            @Html.Label("Average", "Average")
-            @Model.Average
-        </fieldset>
-        <fieldset>
-            @Html.Label("Sum", "Sum")
-            @Model.Sum
-        </fieldset>
-    }
-</div>
+<br/>
 
-<div>
-    @Html.Partial("ScientistResult", ViewData["Result"])
-</div> 
+@if (Model != null)
+{
+    <div class="text-left">
+        <h2>Results</h2>
+    </div>
+    <br/>
+    <div class="text-left">
+        <h4>
+            @Html.Label("Smallest", "Smallest") : @Model.Smallest
+        </h4>
+        <h4>
+            @Html.Label("Largest", "Largest") : @Model.Largest
+        </h4>
+        <h4>
+            @Html.Label("Average", "Average") : @Model.Average
+        </h4>
+        <h4>
+            @Html.Label("Sum", "Sum") : @Model.Sum
+        </h4>
+    </div>
+}
+
+@if (String.Compare(Context.Request.Method, "POST", StringComparison.OrdinalIgnoreCase) == 0)
+{
+    <div>
+        @Html.Partial("ScientistResult", ViewData["Result"])
+    </div> 
+}

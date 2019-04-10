@@ -61,7 +61,8 @@ namespace OldApi
         {
             var sum = Sum(numbers);
 
-            return sum / numbers.Length;
+            
+            return (double)sum / numbers.Length;
         }
     }
 }

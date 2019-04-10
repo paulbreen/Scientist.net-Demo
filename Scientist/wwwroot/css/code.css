@@ -16,6 +16,10 @@
     color: #4EC9B0;
 }
 
+.methodName {
+    color: #9DD58B;
+}
+
 .string {
     color: #BF9D79
 }
@@ -34,4 +38,8 @@
 
 .keyAction {
     color: #D8A0DF;
+}
+
+.comment {
+    color : #4BA440
 }

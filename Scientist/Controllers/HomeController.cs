@@ -14,6 +14,7 @@ namespace ScientistSample.Controllers
         public HomeController()
         {
             ((ResultPublisher)Scientist.ResultPublisher).Result = null;
+            Scientist.Enabled(() => true);
         }
 
         [HttpGet]
@@ -43,8 +44,9 @@ namespace ScientistSample.Controllers
                 }
             }
 
-            var resultSummary = Scientist.Science<Result>("Math", experiment =>
+            var resultSummary = Scientist.Science<Result>("Simple \"Real World\" Example", experiment =>
             {
+                experiment.Compare((x,y) => x.Largest == y.Largest && Math.Abs(x.Average - y.Average) < 0 && x.Smallest == y.Smallest && x.Sum == y.Sum );
                 experiment.Use( ()  => OldApi.Math.Summary(list.ToArray()));
                 experiment.Try( () => NewApi.Math.Summary(list.ToArray()));
             });
@@ -141,8 +143,6 @@ namespace ScientistSample.Controllers
                     list.Add(result);
                 }
             }
-
-            Scientist.Enabled(() => DateTime.Now.Millisecond % 2 == 0);
 
             var resultSummary = Scientist.Science<Result>("Math", experiment =>
             {

@@ -1,8 +1,59 @@
-﻿@model object
-
+﻿@model Common.Result
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewData["Title"] = "Simple Example";
 }
 
-<h2>title</h2>
+<div class="text-center">
+    <h1> Advanced Examples</h1>
+</div>
+
+<br />
+
+<div class="text-left">
+    <h2>Adding additional context to reports</h2>
+</div>
+<br />
+<div class="text-left">
+    <code>
+        <span class="variable">experiment</span>.<span class="methodName">AddContext</span>(<span class="string">"Number"</span>, <span class="variable">number</span>);
+    </code>
+</div>
+
+<br /><br />
+<div class="text-left">
+    <h2>Create custom comparer</h2>
+</div>
+<div class="text-left">
+    <code>
+        <span class="variable">experiment</span>.<span class="methodName">Compare</span>((<span class="variable">x</span>, <span class="variable">y</span>) => <span class="variable">x</span>.Largest == <span class="variable">y</span>.Largest);
+    </code>
+</div>
+<br /><br />
+<div class="text-left">
+    <h2>Writing a custom result publisher</h2>
+</div>
+<br />
+<div class="text-left">
+    <code>
+        <span class="keyword">public class</span><span class="className"> ResultPublisher</span> : <span class="methodName">IResultPublisher</span>
+        <br />{
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span> <span class="className">Task</span><span class="methodName"> Publish <T, TClean></span>(<span class="keyword">Result</span><T, TClean>
+            result)
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;{
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// <span class="comment">Custom Publish</span>
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />}
+    </code>
+</div>
+
+<br /><br />
+<div class="text-left">
+    <h2>Fire and forget result publisher</h2>
+</div>
+<br />
+<div class="text-left">
+    <code style="font-size: 114%">
+        <span class="className">Scientist</span>.<span class="methodName">ResultPublisher</span> = <span class="keyword">new</span> <span class="className">FireAndForgetResultPublisher</span>(<span class="keyword">new</span><span class="className"> MyResultPublisher</span>(onPublisherException));
+    </code>
+</div>
+
